@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brand Logging | Forest Harvesting & Timber Services | Sefton, Canterbury</title>
-  <meta name="description" content="Brand Logging — professional forest harvesting, tree felling, land clearing and log haulage across North Canterbury. Based in Sefton. Call 03 313 8224.">
+  <meta name="description" content="Brand Logging - professional forest harvesting, tree felling, land clearing and log haulage across North Canterbury. Based in Sefton. Call 03 313 8224.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a3828'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='38' font-weight='800' fill='%23e8a020' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+  <meta property="og:title" content="Brand Logging | Forest Harvesting, Sefton">
+  <meta property="og:description" content="Professional forest harvesting, tree felling, land clearing and log haulage across North Canterbury.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://brand-logging-demo.vercel.app/">
+  <meta property="og:image" content="https://brand-logging-demo.vercel.app/images/brand-9.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary:       #1a3828;
@@ -17,67 +24,104 @@
       --accent-hover:  #cc8c18;
       --text-dark:     #161616;
       --text-mid:      #484848;
-      --text-soft:     #7a7a7a;
+      --text-soft:     #676767;
+      --gold-deep:     #a87510;
       --bg-off:        #f4f3ee;
       --bg-dark:       #0c1910;
       --white:         #ffffff;
       --radius-card:   14px;
-      --shadow-card:   0 4px 28px rgba(0,0,0,0.08);
+      --shadow-card:   0 4px 28px rgba(14,31,22,0.08);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Barlow', sans-serif;
       background: var(--bg-off);
       color: var(--text-dark);
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif; }
     img { display: block; max-width: 100%; }
+    .icon { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
     /* ── NAV ── */
-    nav {
+    #nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 999;
-      padding: 0;
+      height: 74px;
+      padding: 0 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.35s ease, box-shadow 0.35s ease;
+      background: var(--white);
+      border-bottom: 1px solid rgba(14,31,22,0.08);
+      transition: box-shadow 0.35s ease;
     }
-    nav.scrolled {
-      background: rgba(14, 31, 22, 0.96);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    #nav.scrolled {
+      box-shadow: 0 6px 24px rgba(14,31,22,0.12);
     }
     .nav-logo {
-      padding: 1rem 1.2rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.35rem;
-      color: #fff;
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -0.02em;
     }
-    .nav-logo span { color: var(--accent); }
-    .nav-cta {
-      margin-right: 1rem;
-      padding: 0.6rem 1.5rem;
+    .nav-logo img { height: 56px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-left: auto;
+      margin-right: 2rem;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent-hover); }
+    .nav-burger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      margin-left: 0.9rem;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+    .nav-burger .icon { width: 24px; height: 24px; }
+    .nav-phone {
+      height: 40px;
+      padding: 0 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1;
       background: var(--accent);
       color: var(--primary-dark);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       border-radius: 50px;
       text-decoration: none;
       transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
     }
-    .nav-cta:hover {
+    .nav-phone .icon { width: 15px; height: 15px; stroke-width: 2; }
+    .nav-phone:hover {
       background: var(--accent-hover);
       transform: translateY(-1px);
       box-shadow: 0 4px 18px rgba(232,160,32,0.45);
@@ -85,8 +129,7 @@
 
     /* ── HERO ── */
     .hero {
-      height: 100vh;
-      min-height: 640px;
+      min-height: 100dvh;
       position: relative;
       display: flex;
       align-items: center;
@@ -95,7 +138,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80');
+      background-image: url('images/brand-9.jpg');
       background-size: cover;
       background-position: center 40%;
       transform: scale(1.06);
@@ -105,33 +148,20 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(130deg, rgba(10,25,15,0.85) 0%, rgba(26,56,40,0.60) 100%);
+      background: linear-gradient(130deg, rgba(10,25,15,0.87) 0%, rgba(26,56,40,0.62) 100%);
     }
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 0 8%;
-      max-width: 820px;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(232,160,32,0.18);
-      border: 1px solid rgba(232,160,32,0.45);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      margin-bottom: 1.6rem;
+      padding: 6rem 8% 4rem;
+      max-width: 860px;
     }
     .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 800;
+      font-size: clamp(3rem, 7.5vw, 5.8rem);
+      font-weight: 700;
       color: #fff;
-      line-height: 1.05;
-      letter-spacing: -0.035em;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
       margin-bottom: 1.3rem;
     }
     .hero h1 em {
@@ -140,20 +170,22 @@
     }
     .hero p {
       font-size: 1.15rem;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.8);
       font-weight: 300;
       max-width: 540px;
       margin-bottom: 2.5rem;
       line-height: 1.75;
     }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
     .btn-primary {
-      padding: 0.9rem 2.2rem;
+      padding: 0.85rem 2.2rem;
       background: var(--accent);
       color: var(--primary-dark);
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       border-radius: 50px;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -167,12 +199,14 @@
       box-shadow: 0 8px 24px rgba(232,160,32,0.45);
     }
     .btn-ghost {
-      padding: 0.9rem 2.2rem;
+      padding: 0.85rem 2.2rem;
       background: transparent;
       color: #fff;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       border-radius: 50px;
       border: 2px solid rgba(255,255,255,0.45);
       text-decoration: none;
@@ -182,62 +216,44 @@
       border-color: #fff;
       background: rgba(255,255,255,0.08);
     }
-    .hero-scroll-cue {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 44px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.55), transparent);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
 
-    /* ── STATS BAR ── */
-    .stats-bar {
-      background: var(--primary);
-      padding: 2.5rem 8%;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      text-align: center;
-    }
-    .stat { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-    .stat-val {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.1rem;
-      font-weight: 800;
-      color: var(--accent);
+    /* ── GOOGLE REVIEW BADGE ── */
+    .gbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.82rem;
       line-height: 1;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-    .stat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.65); letter-spacing: 0.04em; }
+    .gbadge:hover { transform: translateY(-1px); }
+    .gbadge svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .gbadge strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .gbadge .stars { color: var(--accent); letter-spacing: 1px; font-size: 0.8rem; }
+    .gbadge-dark {
+      background: rgba(12,25,16,0.78);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+    .gbadge-light {
+      background: var(--white);
+      border: 1px solid rgba(14,31,22,0.12);
+      color: var(--text-dark);
+      box-shadow: var(--shadow-card);
+    }
+    .gbadge-light .stars { color: var(--gold-deep); }
+    .gbadge-light:hover { box-shadow: 0 8px 28px rgba(14,31,22,0.14); }
 
     /* ── SHARED ── */
-    .section-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
-    }
     .section-heading {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      line-height: 1.12;
-      letter-spacing: -0.025em;
+      font-size: clamp(2.2rem, 4.4vw, 3.3rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
       color: var(--text-dark);
       margin-bottom: 1rem;
     }
@@ -245,9 +261,11 @@
     .section-sub {
       font-size: 1.02rem;
       color: var(--text-mid);
-      max-width: 500px;
+      max-width: 60ch;
       line-height: 1.8;
     }
+    .section-hd { margin-bottom: 3rem; }
+    .section-hd .gbadge { margin-bottom: 1.1rem; }
 
     /* ── ABOUT ── */
     .about {
@@ -273,12 +291,12 @@
       color: #fff;
       padding: 1.5rem 1.75rem;
       border-radius: 12px;
-      box-shadow: 0 10px 36px rgba(0,0,0,0.22);
+      box-shadow: 0 10px 36px rgba(14,31,22,0.25);
       text-align: center;
     }
     .about-badge strong {
       display: block;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 2.2rem;
       font-weight: 800;
       color: var(--accent);
@@ -306,14 +324,7 @@
     .services {
       padding: 8rem 8%;
       background: var(--bg-off);
-      clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
-    }
-    .services-top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: end;
-      margin-bottom: 3.5rem;
+      clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
     }
     .services-grid {
       display: grid;
@@ -323,35 +334,36 @@
     .svc-card {
       background: var(--white);
       border-radius: var(--radius-card);
-      padding: 2rem;
       box-shadow: var(--shadow-card);
-      border: 1px solid rgba(0,0,0,0.055);
+      border: 1px solid rgba(14,31,22,0.055);
       position: relative;
       overflow: hidden;
       transition: transform 0.32s ease, box-shadow 0.32s ease;
     }
-    .svc-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.32s ease;
+    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 14px 44px rgba(14,31,22,0.13); }
+    .svc-photo {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
     }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 14px 44px rgba(0,0,0,0.11); }
-    .svc-card:hover::after { transform: scaleX(1); }
-    .svc-icon {
-      width: 50px; height: 50px;
-      background: rgba(26,56,40,0.08);
-      border-radius: 11px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.2rem;
+    .svc-card:hover .svc-photo { transform: scale(1.05); }
+    .svc-photo-wrap { overflow: hidden; }
+    .svc-body { padding: 1.6rem 1.75rem 1.9rem; }
+    .svc-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-hover);
+      margin-bottom: 0.7rem;
     }
-    .svc-card h3 { font-size: 1.08rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
-    .svc-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.68; }
+    .svc-label .icon { width: 16px; height: 16px; }
+    .svc-body h3 { font-size: 1.08rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .svc-body p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.68; }
 
     /* ── GALLERY ── */
     .gallery {
@@ -359,11 +371,10 @@
       background: var(--primary-dark);
     }
     .gallery .section-heading { color: #fff; }
-    .gallery .section-sub { color: rgba(255,255,255,0.62); }
-    .gallery-hd { margin-bottom: 2.75rem; }
+    .gallery .section-sub { color: rgba(255,255,255,0.75); }
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1.8fr 1fr 1fr;
+      grid-template-columns: 1.8fr 1fr;
       grid-template-rows: 270px 270px;
       gap: 10px;
       border-radius: 16px;
@@ -387,23 +398,6 @@
 
     /* ── REVIEWS ── */
     .reviews { padding: 7rem 8%; background: var(--bg-off); }
-    .reviews-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 3rem;
-      gap: 2rem;
-    }
-    .rating-block { text-align: right; flex-shrink: 0; }
-    .rating-big {
-      font-family: 'Syne', sans-serif;
-      font-size: 4.2rem;
-      font-weight: 800;
-      color: var(--primary);
-      line-height: 1;
-    }
-    .rating-stars { color: var(--accent); font-size: 1.4rem; letter-spacing: 3px; margin: 0.2rem 0; }
-    .rating-label { font-size: 0.82rem; color: var(--text-soft); }
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -414,11 +408,11 @@
       border-radius: var(--radius-card);
       padding: 1.75rem;
       box-shadow: var(--shadow-card);
-      border: 1px solid rgba(0,0,0,0.055);
+      border: 1px solid rgba(14,31,22,0.055);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .review-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.1); }
-    .r-stars { color: var(--accent); font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 0.8rem; }
+    .review-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(14,31,22,0.11); }
+    .r-stars { color: var(--gold-deep); font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 0.8rem; }
     .r-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.72; font-style: italic; margin-bottom: 1.2rem; }
     .r-author { display: flex; align-items: center; gap: 0.75rem; }
     .r-avatar {
@@ -426,7 +420,7 @@
       background: var(--primary);
       display: flex; align-items: center; justify-content: center;
       color: #fff;
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       font-size: 0.82rem;
       flex-shrink: 0;
@@ -434,41 +428,85 @@
     .r-name { font-weight: 600; font-size: 0.9rem; color: var(--text-dark); display: block; }
     .r-loc { font-size: 0.78rem; color: var(--text-soft); }
     .g-source {
-      display: flex; align-items: center; gap: 0.4rem;
+      display: flex; align-items: center; gap: 0.45rem;
       margin-top: 1rem; padding-top: 1rem;
-      border-top: 1px solid rgba(0,0,0,0.06);
+      border-top: 1px solid rgba(14,31,22,0.06);
       font-size: 0.74rem; color: var(--text-soft);
     }
-    .g-dot {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #4285F4; color: #fff;
-      font-size: 0.68rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-    }
+    .g-source svg { width: 15px; height: 15px; }
 
     /* ── CONTACT ── */
     .contact {
       padding: 9rem 8% 7rem;
       background: var(--primary);
-      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
     }
-    .contact-grid {
+    .contact-hd { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
+    .contact-hd .section-heading { color: #fff; }
+    .contact-hd .section-sub { color: rgba(255,255,255,0.68); margin: 0 auto; }
+    .contact-card {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 5rem;
-      align-items: start;
+      grid-template-columns: 1fr 1.05fr;
+      backdrop-filter: blur(10px);
     }
-    .contact-info .section-heading { color: #fff; }
-    .contact-info .section-sub { color: rgba(255,255,255,0.68); margin-bottom: 2.5rem; }
-    .contact-dets { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-map { min-height: 100%; }
+    .contact-map iframe {
+      width: 100%; height: 100%;
+      min-height: 420px;
+      border: 0;
+      display: block;
+      filter: saturate(0.9);
+    }
+    .contact-right { padding: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .btn-call, .btn-email {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      width: 100%;
+      height: 52px;
+      line-height: 1;
+      border-radius: 50px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-call {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .btn-call:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(232,160,32,0.42);
+    }
+    .btn-email {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.45);
+    }
+    .btn-email:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .contact-dets { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1rem; }
     .contact-det { display: flex; align-items: flex-start; gap: 1rem; }
     .det-icon {
       width: 40px; height: 40px;
       background: rgba(232,160,32,0.14);
       border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
+      flex-shrink: 0;
+      color: var(--accent);
     }
+    .det-icon .icon { width: 18px; height: 18px; }
     .det-label {
       font-size: 0.72rem;
       text-transform: uppercase;
@@ -484,56 +522,6 @@
       transition: color 0.2s;
     }
     .det-val a:hover { color: var(--accent); }
-    .form-wrap {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 2.5rem;
-      backdrop-filter: blur(10px);
-    }
-    .form-wrap h3 { font-size: 1.25rem; color: #fff; margin-bottom: 1.75rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .fg { margin-bottom: 1rem; }
-    .fg input, .fg select, .fg textarea {
-      width: 100%;
-      padding: 0.82rem 1rem;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 8px;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      outline: none;
-      transition: border-color 0.25s, background 0.25s;
-      appearance: none;
-    }
-    .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.38); }
-    .fg select { color: rgba(255,255,255,0.5); cursor: pointer; }
-    .fg select option { background: var(--primary); color: #fff; }
-    .fg input:focus, .fg select:focus, .fg textarea:focus {
-      border-color: var(--accent);
-      background: rgba(255,255,255,0.12);
-    }
-    .fg textarea { height: 120px; resize: vertical; }
-    .form-btn {
-      width: 100%;
-      padding: 1rem;
-      background: var(--accent);
-      color: var(--primary-dark);
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.97rem;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    .form-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(232,160,32,0.42);
-    }
 
     /* ── FOOTER ── */
     footer {
@@ -546,7 +534,7 @@
       gap: 1.5rem;
     }
     .footer-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 800;
       font-size: 1.25rem;
       color: #fff;
@@ -554,13 +542,13 @@
     .footer-logo span { color: var(--accent); }
     .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-nav a {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.68);
       text-decoration: none;
       font-size: 0.84rem;
       transition: color 0.2s;
     }
     .footer-nav a:hover { color: var(--accent); }
-    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
 
     /* ── REVEAL ── */
     .reveal {
@@ -572,33 +560,63 @@
     .d1 { transition-delay: 0.1s; }
     .d2 { transition-delay: 0.2s; }
     .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-bg { transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
 
     /* ── RESPONSIVE ── */
+    .nav-burger .burger-close { display: none; }
+    #nav.open .burger-open { display: none; }
+    #nav.open .burger-close { display: block; }
     @media (max-width: 960px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin: 0;
+        background: var(--white);
+        border-bottom: 1px solid rgba(14,31,22,0.08);
+        box-shadow: 0 18px 32px rgba(14,31,22,0.14);
+        padding: 0.4rem 0;
+      }
+      #nav.open .nav-links { display: flex; }
+      .nav-links a {
+        padding: 0.85rem 1.4rem;
+        border-top: 1px solid rgba(14,31,22,0.05);
+      }
+      .nav-links a:first-child { border-top: 0; }
+      .nav-burger { display: inline-flex; }
       .about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 8%; }
       .about-img { height: 360px; }
       .about-badge { bottom: 1rem; right: 1rem; }
-      .services-top { grid-template-columns: 1fr; gap: 1.5rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
       .g-item:first-child { grid-row: auto; grid-column: 1 / 3; height: 280px; }
       .g-item { height: 200px; }
-      .reviews-top { flex-direction: column; align-items: flex-start; }
-      .rating-block { text-align: left; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .contact-card { grid-template-columns: 1fr; }
+      .contact-map { order: 2; }
+      .contact-right { order: 1; }
+      .contact-map iframe { min-height: 320px; }
       footer { flex-direction: column; text-align: center; }
     }
     @media (max-width: 600px) {
+      #nav { height: 62px; }
+      .nav-logo img { height: 44px; }
+      .nav-phone { padding: 0 1rem; font-size: 0.92rem; }
       .about, .services, .gallery, .reviews, .contact, footer { padding-left: 5%; padding-right: 5%; }
-      .hero-content { padding: 0 5%; }
-      .stats-bar { padding: 2rem 5%; }
+      .hero-content { padding-left: 5%; padding-right: 5%; }
       .services-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .g-item:first-child { grid-column: auto; height: 240px; }
       .g-item { height: 200px; }
+      .contact-right { padding: 1.75rem; }
     }
   </style>
 </head>
@@ -606,43 +624,50 @@
 
 <!-- ════════════ NAV ════════════ -->
 <nav id="nav">
-  <a href="#" class="nav-logo">Brand<span>Logging</span></a>
-  <a href="#contact" class="nav-cta">Get a Quote</a>
+  <a href="#" class="nav-logo" aria-label="Brand Logging home">
+    <img src="images/logo.png" alt="Brand Mechanical, Ashley Forest logo">
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Our Work</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="tel:033138224" class="nav-phone">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+    03 313 8224
+  </a>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <svg class="icon burger-open" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <svg class="icon burger-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
 </nav>
 
 <!-- ════════════ HERO ════════════ -->
-<div class="hero">
+<div class="hero" id="top">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">North Canterbury's Trusted Logging Team</div>
     <h1>Precision <em>Logging,</em><br>Built on the Land</h1>
-    <p>From first fell to final load — Brand Logging delivers professional forest harvesting, felling, and extraction services across Sefton and the wider Canterbury region.</p>
+    <p>From first fell to final load. Professional forest harvesting, felling, and extraction across Sefton and wider Canterbury.</p>
     <div class="hero-ctas">
-      <a href="#contact" class="btn-primary">Get a Free Quote →</a>
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
       <a href="#services" class="btn-ghost">Our Services</a>
+      <a href="#reviews" class="gbadge gbadge-dark" aria-label="Read our Google reviews">
+        <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
+        <strong>Google Reviews</strong>
+      </a>
     </div>
   </div>
-  <div class="hero-scroll-cue">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</div>
-
-<!-- ════════════ STATS BAR ════════════ -->
-<div class="stats-bar">
-  <div class="stat reveal"><div class="stat-val">20+</div><div class="stat-lbl">Years Operating</div></div>
-  <div class="stat reveal d1"><div class="stat-val">NZ</div><div class="stat-lbl">Owned &amp; Operated</div></div>
-  <div class="stat reveal d2"><div class="stat-val">H&amp;S</div><div class="stat-lbl">Safety Certified</div></div>
-  <div class="stat reveal d3"><div class="stat-val">Full</div><div class="stat-lbl">Insurance Cover</div></div>
 </div>
 
 <!-- ════════════ ABOUT ════════════ -->
 <section class="about" id="about">
   <div class="about-img-wrap reveal">
     <img
-      src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=80"
-      alt="Aerial view of a professional logging operation in Canterbury"
+      src="images/brand-1.jpg"
+      alt="Brand Logging truck loaded with logs at the Sefton yard"
       class="about-img"
     >
     <div class="about-badge">
@@ -651,10 +676,9 @@
     </div>
   </div>
   <div class="about-text">
-    <div class="section-tag">Who We Are</div>
     <h2 class="section-heading reveal">Locally Owned.<br><em>Professionally Run.</em></h2>
-    <p class="reveal">Brand Logging is a North Canterbury forestry contractor with deep roots in the Sefton community. We specialise in the full spectrum of forest harvesting — from planning and felling through to extraction and haulage — for landowners, farmers, and commercial forest managers.</p>
-    <p class="reveal" style="color:var(--text-mid);">Our team brings years of hands-on experience and modern machinery to every job, delivering safe, efficient, and land-conscious harvesting that gets results. Whether you've got a small woodlot or a large commercial block, we treat every site with the same level of care.</p>
+    <p class="reveal">Brand Logging is a North Canterbury forestry contractor with deep roots in the Sefton community. We handle the full harvest, from planning and felling through to extraction and haulage, for landowners, farmers, and commercial forest managers.</p>
+    <p class="reveal">Our team brings years of hands-on experience and modern machinery to every job. Small farm woodlot or large commercial block, every site gets the same care and the same standard of work.</p>
     <div class="about-checks">
       <div class="about-check reveal"><div class="check-dot"></div> Certified operators with full H&amp;S compliance</div>
       <div class="about-check reveal d1"><div class="check-dot"></div> Well-maintained modern harvesting equipment</div>
@@ -666,87 +690,95 @@
 
 <!-- ════════════ SERVICES ════════════ -->
 <section class="services" id="services">
-  <div class="services-top">
-    <div>
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-heading reveal">Complete Forest<br><em>Harvesting Services</em></h2>
-    </div>
+  <div class="section-hd">
+    <a href="#reviews" class="gbadge gbadge-light reveal" aria-label="Read our Google reviews">
+      <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
+      <strong>Google Reviews</strong>
+    </a>
+    <h2 class="section-heading reveal">Complete Forest<br><em>Harvesting Services</em></h2>
     <p class="section-sub reveal">From the first tree down to the last log loaded, we manage the full harvest with precision and care for the land beneath it.</p>
   </div>
   <div class="services-grid">
     <div class="svc-card reveal">
-      <div class="svc-icon">🌲</div>
-      <h3>Forest Harvesting</h3>
-      <p>Full-scale commercial harvesting using modern felling and forwarding equipment. Efficient, safe, and delivered to road on schedule.</p>
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-8.jpg" alt="Harvesting machinery working a Canterbury skid site"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3 7 10h3l-4 6h5v4h2v-4h5l-4-6h3z"/></svg>Harvest</span>
+        <h3>Forest Harvesting</h3>
+        <p>Full-scale commercial harvesting with modern felling and forwarding gear. Efficient, safe, and delivered to road on schedule.</p>
+      </div>
     </div>
     <div class="svc-card reveal d1">
-      <div class="svc-icon">🪓</div>
-      <h3>Tree Felling &amp; Processing</h3>
-      <p>Manual and mechanical felling for all species and site types. Our operators are trained to handle complex and steep terrain safely.</p>
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-6.jpg" alt="CAT harvester with Waratah head processing a stem"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><path d="m14 12-8.5 8.5a2.12 2.12 0 1 1-3-3L11 9"/><path d="M15 13 9 7l4-4 6 6h3a8 8 0 0 1-7 7z"/></svg>Felling</span>
+        <h3>Tree Felling &amp; Processing</h3>
+        <p>Manual and mechanical felling for all species and site types. Our operators handle complex and steep terrain safely.</p>
+      </div>
     </div>
     <div class="svc-card reveal d2">
-      <div class="svc-icon">🚛</div>
-      <h3>Log Hauling &amp; Transport</h3>
-      <p>Coordinated haulage from forest to mill, working closely with trusted transport partners to keep your timber moving on time.</p>
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-2.jpg" alt="Brand Logging truck and trailer ready for haulage"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><path d="M7 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M15 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/><path d="M5 17H3V6a1 1 0 0 1 1-1h9v12m-2 0h2m4 0h2v-6h-8m0-5h5l3 5"/></svg>Transport</span>
+        <h3>Log Hauling &amp; Transport</h3>
+        <p>Coordinated haulage from forest to mill, working with proven transport partners to keep your timber moving on time.</p>
+      </div>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-9.jpg" alt="Cleared hilltop harvest site above the Canterbury plains"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><path d="M3 18l6-8 4 5 3-4 5 7z"/></svg>Clearing</span>
+        <h3>Land Clearing</h3>
+        <p>Shelter belts, windbreaks, and scrub cleared for farming or development. Your land left clean, tidy, and ready for its next use.</p>
+      </div>
     </div>
     <div class="svc-card reveal d1">
-      <div class="svc-icon">🏗️</div>
-      <h3>Land Clearing</h3>
-      <p>Clearing shelter belts, windbreaks, and scrub for farming or development. We leave your land clean, tidy, and ready for its next purpose.</p>
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-7.jpg" alt="Forwarder loaded with logs on a forest track"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Extraction</span>
+        <h3>Mechanical Extraction</h3>
+        <p>Purpose-built extraction machinery for challenging country, maximising timber recovery while minimising ground disturbance.</p>
+      </div>
     </div>
     <div class="svc-card reveal d2">
-      <div class="svc-icon">⚙️</div>
-      <h3>Mechanical Extraction</h3>
-      <p>Purpose-built extraction machinery for challenging terrain — maximising timber recovery while minimising ground disturbance.</p>
-    </div>
-    <div class="svc-card reveal d3">
-      <div class="svc-icon">📋</div>
-      <h3>Site Assessment &amp; Quoting</h3>
-      <p>Not sure what your forest is worth? We'll come out, walk the block, and give you a clear, obligation-free quote.</p>
+      <div class="svc-photo-wrap"><img class="svc-photo" src="images/brand-3.jpg" alt="Brand Logging reception and workshop at Sefton"></div>
+      <div class="svc-body">
+        <span class="svc-label"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="17" rx="2"/><path d="M9 4V3.5A1.5 1.5 0 0 1 10.5 2h3A1.5 1.5 0 0 1 15 3.5V4"/><path d="m9.5 13 2 2 3.5-3.5"/></svg>Quotes</span>
+        <h3>Site Assessment &amp; Quoting</h3>
+        <p>Not sure what your forest is worth? We walk the block with you and give you a clear, obligation-free quote.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════ GALLERY ════════════ -->
 <section class="gallery" id="gallery">
-  <div class="gallery-hd">
-    <div class="section-tag">Our Work</div>
+  <div class="section-hd">
+    <a href="#reviews" class="gbadge gbadge-dark reveal" aria-label="Read our Google reviews">
+      <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>
+      <strong>Google Reviews</strong>
+    </a>
     <h2 class="section-heading reveal">Harvesting Done Right</h2>
-    <p class="section-sub reveal">Years of experience across Canterbury's varied terrain — delivered with precision every time.</p>
+    <p class="section-sub reveal">Recent work across Canterbury's varied terrain, from farm woodlots to full commercial blocks.</p>
   </div>
   <div class="gallery-grid">
     <div class="g-item">
       <img
-        src="https://images.unsplash.com/photo-1511497584788-876760111969?w=1000&q=80"
-        alt="Misty pine forest ready for harvest in Canterbury"
+        src="images/brand-4.jpg"
+        alt="Brand Mechanical truck outside the red workshop at Sefton"
       >
       <div class="g-veil"></div>
     </div>
     <div class="g-item">
       <img
-        src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=700&q=80"
-        alt="Freshly cut logs stacked and ready for transport"
+        src="images/brand-5.jpg"
+        alt="The Brand Logging yard at Sefton with trucks and sheds"
       >
       <div class="g-veil"></div>
     </div>
     <div class="g-item">
       <img
-        src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=700&q=80"
-        alt="Sunlight filtering through a harvested forest stand"
-      >
-      <div class="g-veil"></div>
-    </div>
-    <div class="g-item">
-      <img
-        src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=700&q=80"
-        alt="Aerial view of Canterbury forestry landscape"
-      >
-      <div class="g-veil"></div>
-    </div>
-    <div class="g-item">
-      <img
-        src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80"
-        alt="New Zealand alpine forest terrain"
+        src="images/brand-1.jpg"
+        alt="Loaded Brand Logging truck leaving the yard"
       >
       <div class="g-veil"></div>
     </div>
@@ -755,106 +787,80 @@
 
 <!-- ════════════ REVIEWS ════════════ -->
 <section class="reviews" id="reviews">
-  <div class="reviews-top">
-    <div>
-      <div class="section-tag">Google Reviews</div>
-      <h2 class="section-heading reveal">What Our Clients Say</h2>
-    </div>
-    <div class="rating-block reveal">
-      <div class="rating-big">4.9</div>
-      <div class="rating-stars">★★★★★</div>
-      <div class="rating-label">Based on Google Reviews</div>
-    </div>
+  <div class="section-hd">
+    <h2 class="section-heading reveal">What Our Clients Say</h2>
   </div>
   <div class="reviews-grid">
     <div class="review-card reveal">
       <div class="r-stars">★★★★★</div>
-      <p class="r-text">"Absolute professionals from the first call through to completion. The Brand Logging crew felled our shelter belt fast and left the site spotless. Would recommend to any Canterbury landowner without hesitation."</p>
+      <p class="r-text">"Office staff are A.MAZ.ING, so helpful and friendly. Plus...guys in the workshop really know their stuff."</p>
       <div class="r-author">
-        <div class="r-avatar">MH</div>
-        <div><span class="r-name">Murray Harrington</span><span class="r-loc">Rangiora</span></div>
+        <div class="r-avatar">TK</div>
+        <div><span class="r-name">That Kiwi Chick</span><span class="r-loc">Local Guide</span></div>
       </div>
-      <div class="g-source"><div class="g-dot">G</div> Google Review</div>
+      <div class="g-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google Review</div>
     </div>
     <div class="review-card reveal d1">
       <div class="r-stars">★★★★★</div>
-      <p class="r-text">"Used Brand Logging for a commercial harvest on our Amberley block. Efficient operation, great communication throughout, and the extraction crew clearly knew the terrain. Very happy with the result."</p>
       <div class="r-author">
-        <div class="r-avatar">SR</div>
-        <div><span class="r-name">Sarah Reynolds</span><span class="r-loc">Amberley</span></div>
+        <div class="r-avatar">KC</div>
+        <div><span class="r-name">Kerry Calder</span><span class="r-loc">Google Reviewer</span></div>
       </div>
-      <div class="g-source"><div class="g-dot">G</div> Google Review</div>
+      <div class="g-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google Review</div>
     </div>
     <div class="review-card reveal d2">
-      <div class="r-stars">★★★★★</div>
-      <p class="r-text">"On time every single day, safety was clearly the priority, and the quote was fair and accurate. Really pleased with how smoothly the whole job ran. Will definitely use Brand Logging again."</p>
+      <div class="r-stars">★★★★</div>
       <div class="r-author">
-        <div class="r-avatar">DT</div>
-        <div><span class="r-name">Dave Tanner</span><span class="r-loc">Sefton</span></div>
+        <div class="r-avatar">MC</div>
+        <div><span class="r-name">Mary Columbus</span><span class="r-loc">Local Guide</span></div>
       </div>
-      <div class="g-source"><div class="g-dot">G</div> Google Review</div>
-    </div>
-    <div class="review-card reveal d3">
-      <div class="r-stars">★★★★★</div>
-      <p class="r-text">"Brand Logging cleared our farm woodlot and it was seamless from start to finish. Gemma in the office kept us informed the whole time — great communication and a great result. Highly recommend."</p>
-      <div class="r-author">
-        <div class="r-avatar">JB</div>
-        <div><span class="r-name">Jo Blackwell</span><span class="r-loc">Oxford</span></div>
-      </div>
-      <div class="g-source"><div class="g-dot">G</div> Google Review</div>
+      <div class="g-source"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.9-.1-1.5-.3-2.2H12v4.1h6.5c-.1 1.1-.8 2.7-2.4 3.8l3.7 2.9c2.2-2 3.7-5 3.7-8.6z"/><path fill="#34A853" d="M12 24c3.2 0 5.9-1.1 7.9-2.9l-3.7-2.9c-1 .7-2.4 1.2-4.2 1.2-3.1 0-5.8-2.1-6.7-5l-3.9 3C3.4 21.3 7.4 24 12 24z"/><path fill="#FBBC05" d="M5.3 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.7.4-2.4l-3.9-3C.5 8.2 0 10 0 12s.5 3.8 1.4 5.4l3.9-3z"/><path fill="#EA4335" d="M12 4.7c2.2 0 3.7 1 4.6 1.8l3.3-3.2C17.9 1.2 15.2 0 12 0 7.4 0 3.4 2.7 1.4 6.6l3.9 3c.9-2.9 3.6-4.9 6.7-4.9z"/></svg> Google Review</div>
     </div>
   </div>
 </section>
 
 <!-- ════════════ CONTACT ════════════ -->
 <section class="contact" id="contact">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="section-tag">Get in Touch</div>
-      <h2 class="section-heading reveal">Ready to Get<br>Started?</h2>
-      <p class="section-sub reveal">Whether your forest is ready to harvest now or you're planning ahead, get in touch with the Brand Logging team for a free, no-obligation assessment and quote.</p>
+  <div class="contact-hd">
+    <h2 class="section-heading reveal">Ready to Get Started?</h2>
+    <p class="section-sub reveal">Your forest might be ready now or still years away. Either way, call or email for a free, no-obligation assessment and quote.</p>
+  </div>
+  <div class="contact-card reveal">
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps?q=Brand+Logging,+217+Forestry+Road,+Sefton,+New+Zealand&output=embed"
+        title="Map showing Brand Logging at 217 Forestry Road, Sefton"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+    <div class="contact-right">
+      <a href="tel:033138224" class="btn-call">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Call 03 313 8224
+      </a>
+      <a href="#" class="btn-email" id="emailBtn" data-user="office" data-domain="brandmechanical.co.nz" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Email Us
+      </a>
       <div class="contact-dets">
-        <div class="contact-det reveal">
-          <div class="det-icon">📍</div>
-          <div><span class="det-label">Location</span><span class="det-val">Sefton, North Canterbury</span></div>
-        </div>
-        <div class="contact-det reveal d1">
-          <div class="det-icon">📞</div>
+        <div class="contact-det">
+          <div class="det-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
           <div><span class="det-label">Phone</span><span class="det-val"><a href="tel:033138224">03 313 8224</a></span></div>
         </div>
-        <div class="contact-det reveal d2">
-          <div class="det-icon">✉️</div>
-          <div><span class="det-label">Email</span><span class="det-val"><a href="mailto:office@brandmechanical.co.nz">office@brandmechanical.co.nz</a></span></div>
+        <div class="contact-det">
+          <div class="det-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div><span class="det-label">Email</span><span class="det-val" id="emailText">office [at] brandmechanical</span></div>
+        </div>
+        <div class="contact-det">
+          <div class="det-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><span class="det-label">Location</span><span class="det-val">217 Forestry Road, Sefton, North Canterbury</span></div>
+        </div>
+        <div class="contact-det">
+          <div class="det-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><span class="det-label">Hours</span><span class="det-val">Mon to Fri, 7:00am to 5:00pm</span></div>
         </div>
       </div>
-    </div>
-
-    <div class="form-wrap" id="formWrap">
-      <h3>Send an Enquiry</h3>
-      <form action="https://api.staticforms.xyz/submit" method="post" id="contactForm">
-        <input type="hidden" name="apiKey" value="sf_768da8d33927e7f4f241d0a6">
-        <input type="hidden" name="redirectTo" value="https://brand-logging-demo.vercel.app?sent=true">
-        <div class="form-row">
-          <div class="fg"><input type="text" name="firstName" placeholder="First Name" required></div>
-          <div class="fg"><input type="text" name="lastName" placeholder="Last Name" required></div>
-        </div>
-        <div class="fg"><input type="email" name="email" placeholder="Email Address" required></div>
-        <div class="fg"><input type="tel" name="phone" placeholder="Phone Number"></div>
-        <div class="fg">
-          <select name="service" required>
-            <option value="" disabled selected>What can we help with?</option>
-            <option value="Forest Harvesting">Forest Harvesting</option>
-            <option value="Tree Felling & Processing">Tree Felling &amp; Processing</option>
-            <option value="Log Hauling & Transport">Log Hauling &amp; Transport</option>
-            <option value="Land Clearing">Land Clearing</option>
-            <option value="Mechanical Extraction">Mechanical Extraction</option>
-            <option value="Site Assessment & Quote">Site Assessment &amp; Quote</option>
-            <option value="Other / Not Sure">Other / Not Sure</option>
-          </select>
-        </div>
-        <div class="fg"><textarea name="message" placeholder="Tell us about your job — location, forest size, timber type, or any other details..." required></textarea></div>
-        <button type="submit" class="form-btn">Send Enquiry →</button>
-      </form>
     </div>
   </div>
 </section>
@@ -869,13 +875,31 @@
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="footer-copy">© 2025 Brand Logging. Sefton, North Canterbury.</div>
+  <div class="footer-copy">© 2026 Brand Logging. Sefton, North Canterbury.</div>
 </footer>
 
+<div id="topSentinel" style="position:absolute;top:0;left:0;width:1px;height:80px;pointer-events:none;"></div>
+
 <script>
-  // Nav on scroll
+  // Nav background once the page top scrolls away (IntersectionObserver, no scroll listener)
   const nav = document.getElementById('nav');
-  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 70));
+  new IntersectionObserver(([e]) => {
+    nav.classList.toggle('scrolled', !e.isIntersecting);
+  }).observe(document.getElementById('topSentinel'));
+
+  // Mobile menu toggle
+  const burger = document.getElementById('navBurger');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    })
+  );
 
   // Hero bg slow zoom
   addEventListener('load', () => document.getElementById('heroBg').classList.add('zoomed'));
@@ -887,16 +911,12 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
   revealEls.forEach(el => obs.observe(el));
 
-  // Form success state
-  if (new URLSearchParams(location.search).get('sent') === 'true') {
-    const wrap = document.getElementById('formWrap');
-    if (wrap) wrap.innerHTML = `
-      <div style="text-align:center;padding:3rem 1rem">
-        <div style="font-size:3rem;margin-bottom:1rem">✅</div>
-        <h3 style="font-family:Syne,sans-serif;font-size:1.5rem;color:#fff;margin-bottom:.75rem">Enquiry Sent!</h3>
-        <p style="color:rgba(255,255,255,.7);font-size:.95rem">Thanks for getting in touch. The Brand Logging team will be in contact with you shortly.</p>
-      </div>`;
-  }
+  // Email assembled from split parts so it survives Cloudflare scraping
+  const eb = document.getElementById('emailBtn');
+  const addr = eb.dataset.user + '@' + eb.dataset.domain;
+  eb.href = 'https://mail.google.com/mail/?view=cm&fm=1&to=' + addr +
+    '&su=' + encodeURIComponent('Enquiry from the Brand Logging website');
+  document.getElementById('emailText').textContent = addr;
 </script>
 </body>
 </html>
